@@ -1,365 +1,445 @@
-TE AMO BUBI
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tulipanes Amarillos para Haly, mi bubi amada</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Para Haly, mi bubi amada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   
   <style>
-    .font-romantic {
-      font-family: 'Great Vibes', cursive;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .font-handwriting {
-      font-family: 'Dancing Script', cursive;
-    }
-    .font-sans-clean {
+    body {
+      background: radial-gradient(circle at center, #2a082b 0%, #120317 60%, #050008 100%);
       font-family: 'Montserrat', sans-serif;
-    }
-    .font-serif-lux {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Ambient atmospheric glow and animations */
-    @keyframes tulipBreeze {
-      0%, 100% {
-        transform: rotate(0deg) translateY(0);
-      }
-      35% {
-        transform: rotate(1.8deg) translateY(-2px);
-      }
-      75% {
-        transform: rotate(-1.5deg) translateY(1px);
-      }
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      overflow-x: hidden;
+      text-align: center;
     }
 
-    @keyframes leafSwayLeft {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-3deg) scaleY(1.02); }
+    #petals-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none !important;
+      z-index: 1;
     }
 
-    @keyframes leafSwayRight {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(3.5deg) scaleY(1.01); }
+    .main-container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 480px;
+      width: 100%;
+      margin-top: 10px;
     }
 
-    @keyframes softGlowText {
-      0%, 100% {
-        filter: drop-shadow(0 0 10px rgba(253, 224, 71, 0.45)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-      }
-      50% {
-        filter: drop-shadow(0 0 24px rgba(250, 204, 21, 0.85)) drop-shadow(0 0 35px rgba(245, 158, 11, 0.6));
-      }
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fde047;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
     }
 
-    @keyframes gentlePulseFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-6px) scale(1.015); }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 8vw, 3.8rem);
+      color: #fde047;
+      text-shadow: 0 0 15px rgba(253, 224, 71, 0.6), 0 0 30px rgba(234, 179, 8, 0.4);
+      margin: 5px 0 10px 0;
+      line-height: 1.2;
     }
 
-    @keyframes floatHeart {
-      0% { transform: translateY(0) scale(0.85) rotate(0deg); opacity: 0.8; }
-      50% { transform: translateY(-12px) scale(1.1) rotate(10deg); opacity: 1; }
-      100% { transform: translateY(0) scale(0.85) rotate(0deg); opacity: 0.8; }
+    p.subtitle {
+      font-size: 13px;
+      color: rgba(254, 240, 138, 0.85);
+      font-weight: 300;
+      max-width: 320px;
+      margin-bottom: 15px;
     }
 
-    .animate-tulip-breeze {
-      animation: tulipBreeze 6.5s ease-in-out infinite;
-      transform-origin: 200px 380px;
+    /* Ramo */
+    .bouquet-box {
+      width: 280px;
+      height: 350px;
+      position: relative;
+      margin: 10px 0;
+    }
+    .sway {
+      animation: gentleSway 5s ease-in-out infinite;
+      transform-origin: bottom center;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    }
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
     }
 
-    .animate-leaf-left {
-      animation: leafSwayLeft 5s ease-in-out infinite;
-      transform-origin: 160px 320px;
+    /* Botón de la carta */
+    .btn-carta {
+      background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+      color: #2e082b;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.6);
+      margin-top: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, filter 0.15s ease;
+      touch-action: manipulation;
+    }
+    .btn-carta:active {
+      transform: scale(0.96);
     }
 
-    .animate-leaf-right {
-      animation: leafSwayRight 5.5s ease-in-out infinite;
-      transform-origin: 240px 320px;
+    /* Botón de Música */
+    .btn-music {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      color: #fef08a;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 50;
+      backdrop-filter: blur(8px);
     }
 
-    .glow-romantic-title {
-      animation: softGlowText 3.6s ease-in-out infinite;
+    /* MODAL DE LA CARTA (Puro CSS) */
+    #letter-modal {
+      display: none; /* Se activa directamente con JS */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 999999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    .float-card {
-      animation: gentlePulseFloat 5s ease-in-out infinite;
+    .letter-content {
+      background: #fffdf0;
+      color: #2c1a0e;
+      border-radius: 20px;
+      max-width: 380px;
+      width: 100%;
+      padding: 30px 24px 24px 24px;
+      position: relative;
+      border: 2px solid #facc15;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
     }
 
-    .heart-float {
-      animation: floatHeart 3s ease-in-out infinite;
+    .btn-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #fef08a;
+      color: #713f12;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Glass frosted effect */
-    .glass-dark-card {
-      background: linear-gradient(135deg, rgba(38, 20, 32, 0.72) 0%, rgba(20, 10, 25, 0.82) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(250, 204, 21, 0.25);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(245, 158, 11, 0.15);
+    .letter-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      color: #854d0e;
+      text-align: center;
+      margin: 10px 0 15px 0;
+    }
+
+    .letter-body {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      line-height: 1.4;
+      color: #451a03;
+    }
+    .letter-body p {
+      margin-bottom: 12px;
+    }
+
+    .btn-heart {
+      background: #eab308;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      display: block;
+      margin: 20px auto 0 auto;
+      cursor: pointer;
+    }
+
+    footer {
+      font-size: 11px;
+      color: rgba(254, 240, 138, 0.4);
+      z-index: 10;
+      margin-top: 20px;
     }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-[#1c0b1e] via-[#2d1225] to-[#120716] font-sans-clean text-amber-100 overflow-x-hidden relative selection:bg-amber-400 selection:text-neutral-900">
+<body>
 
-  <!-- Interactive Background Canvas for Falling Tulip Petals & Golden Sparkles -->
-  <canvas id="canvas-petals" class="fixed inset-0 pointer-events-none z-10 w-full h-full"></canvas>
+  <!-- Lienzo pétalos -->
+  <canvas id="petals-canvas"></canvas>
 
-  <div class="relative z-20 min-h-screen flex flex-col justify-between p-4 sm:p-6 md:p-8">
-    
-    <!-- Top Action Navigation -->
-    <header class="w-full max-w-4xl mx-auto flex items-center justify-between py-1 px-2 sm:px-4">
-      <div class="flex items-center gap-2">
-        <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-        <span class="text-xs sm:text-sm font-medium tracking-widest uppercase text-amber-200/80">Tulipanes de Amor Eterno</span>
-      </div>
+  <!-- Botón de música -->
+  <button class="btn-music" id="musicBtn" onclick="toggleMusic()">🎵 Música</button>
 
-      <!-- Music Toggle Button (Web Audio API Synthesizer) -->
-      <button id="btn-audio" class="flex items-center gap-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 rounded-full px-4 py-2 text-xs sm:text-sm font-medium backdrop-blur-md transition-all duration-300 shadow-md hover:shadow-amber-400/20 active:scale-95">
-        <span id="audio-icon" class="text-base">🎵</span>
-        <span id="audio-label">Música romántica</span>
-      </button>
-    </header>
+  <div class="main-container">
+    <div class="tag">Para ti</div>
+    <h1>Para Haly, mi bubi amada</h1>
+    <p class="subtitle">Un ramo de tulipanes amarillos que nunca se marchitan, tan radiantes como tu sonrisa.</p>
 
-    <!-- Center Stage: The Bouquet of Yellow Tulips -->
-    <main class="w-full max-w-xl mx-auto flex flex-col items-center my-auto py-2">
-      
-      <!-- Romantic Badge Pill -->
-      <div class="mb-3">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs sm:text-sm tracking-widest uppercase shadow-sm">
-          <span>✨</span>
-          <span>Flores eternas de luz y ternura</span>
-          <span>✨</span>
-        </div>
-      </div>
+    <!-- Tulipanes -->
+    <div class="bouquet-box">
+      <svg class="sway" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4ade80"/>
+            <stop offset="100%" stop-color="#15803d"/>
+          </linearGradient>
+          <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#86efac"/>
+            <stop offset="100%" stop-color="#166534"/>
+          </linearGradient>
+          <linearGradient id="tulipMain" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fef08a"/>
+            <stop offset="40%" stop-color="#facc15"/>
+            <stop offset="100%" stop-color="#ca8a04"/>
+          </linearGradient>
+          <linearGradient id="tulipLight" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="50%" stop-color="#fde047"/>
+            <stop offset="100%" stop-color="#eab308"/>
+          </linearGradient>
+          <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="50%" stop-color="#fef3c7"/>
+            <stop offset="100%" stop-color="#d97706"/>
+          </linearGradient>
+        </defs>
 
-      <!-- Bouquet Showcase Frame -->
-      <div class="w-full relative glass-dark-card rounded-3xl p-5 sm:p-8 float-card transition-all duration-500">
-        
-        <!-- Golden Corner Embellishments -->
-        <div class="absolute top-3 left-3 text-amber-400/60 text-lg sm:text-xl">✦</div>
-        <div class="absolute top-3 right-3 text-amber-400/60 text-lg sm:text-xl">✦</div>
-        <div class="absolute bottom-3 left-3 text-amber-400/60 text-lg sm:text-xl">✦</div>
-        <div class="absolute bottom-3 right-3 text-amber-400/60 text-lg sm:text-xl">✦</div>
+        <!-- Tallos -->
+        <path d="M200 450 C 190 350, 160 250, 145 180" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M200 450 C 200 340, 200 240, 200 160" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M200 450 C 210 350, 240 250, 255 180" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M200 450 C 180 340, 120 280, 105 220" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M200 450 C 220 340, 280 280, 295 220" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round"/>
 
-        <!-- Floating ambient hearts on top corners -->
-        <div class="absolute -top-3 left-8 text-amber-300 text-xl heart-float" style="animation-delay: 0s;">💛</div>
-        <div class="absolute -top-3 right-8 text-yellow-300 text-xl heart-float" style="animation-delay: 1.5s;">✨</div>
+        <!-- Hojas -->
+        <path d="M195 380 C 120 330, 80 260, 95 190 C 125 240, 165 310, 195 380 Z" fill="url(#leafGrad)"/>
+        <path d="M205 380 C 280 330, 320 260, 305 190 C 275 240, 235 310, 205 380 Z" fill="url(#leafGrad)"/>
 
-        <!-- SVG Art: Realistic & Stylized Yellow Tulips Bouquet -->
-        <div class="relative w-full h-72 sm:h-80 flex items-center justify-center">
-          <svg viewBox="0 0 400 440" class="w-full h-full drop-shadow-2xl overflow-visible">
-            <defs>
-              <!-- Tulip Petal Gradients -->
-              <linearGradient id="tulipPetalGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fffbeb" />
-                <stop offset="25%" stop-color="#fef08a" />
-                <stop offset="65%" stop-color="#facc15" />
-                <stop offset="100%" stop-color="#d97706" />
-              </linearGradient>
+        <!-- Tulipán Izquierdo -->
+        <g transform="translate(105, 220) rotate(-22)">
+          <path d="M-25 0 C -35 -40, -15 -70, 0 -85 C 15 -70, 35 -40, 25 0 Z" fill="url(#tulipMain)"/>
+          <path d="M-15 0 C -25 -40, 0 -80, 0 -85 C 0 -80, 25 -40, 15 0 Z" fill="url(#tulipLight)"/>
+        </g>
 
-              <linearGradient id="tulipPetalGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fef9c3" />
-                <stop offset="35%" stop-color="#fbbf24" />
-                <stop offset="85%" stop-color="#eab308" />
-                <stop offset="100%" stop-color="#b45309" />
-              </linearGradient>
+        <!-- Tulipán Derecho -->
+        <g transform="translate(295, 220) rotate(22)">
+          <path d="M-25 0 C -35 -40, -15 -70, 0 -85 C 15 -70, 35 -40, 25 0 Z" fill="url(#tulipMain)"/>
+          <path d="M-15 0 C -25 -40, 0 -80, 0 -85 C 0 -80, 25 -40, 15 0 Z" fill="url(#tulipLight)"/>
+        </g>
 
-              <linearGradient id="tulipPetalBack" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#fde047" />
-                <stop offset="70%" stop-color="#d97706" />
-                <stop offset="100%" stop-color="#92400e" />
-              </linearGradient>
+        <!-- Tulipán Central Izquierdo -->
+        <g transform="translate(145, 180) rotate(-10)">
+          <path d="M-30 0 C -40 -45, -18 -80, 0 -95 C 18 -80, 40 -45, 30 0 Z" fill="url(#tulipMain)"/>
+          <path d="M-18 0 C -28 -45, 0 -90, 0 -95 C 0 -90, 28 -45, 18 0 Z" fill="url(#tulipLight)"/>
+        </g>
 
-              <!-- Stem & Leaf Gradients -->
-              <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4ade80" />
-                <stop offset="50%" stop-color="#22c55e" />
-                <stop offset="100%" stop-color="#15803d" />
-              </linearGradient>
+        <!-- Tulipán Central Derecho -->
+        <g transform="translate(255, 180) rotate(10)">
+          <path d="M-30 0 C -40 -45, -18 -80, 0 -95 C 18 -80, 40 -45, 30 0 Z" fill="url(#tulipMain)"/>
+          <path d="M-18 0 C -28 -45, 0 -90, 0 -95 C 0 -90, 28 -45, 18 0 Z" fill="url(#tulipLight)"/>
+        </g>
 
-              <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#86efac" />
-                <stop offset="40%" stop-color="#22c55e" />
-                <stop offset="100%" stop-color="#166534" />
-              </linearGradient>
+        <!-- Tulipán Rey Centro -->
+        <g transform="translate(200, 155)">
+          <path d="M-35 0 C -48 -50, -20 -90, 0 -110 C 20 -90, 48 -50, 35 0 Z" fill="url(#tulipMain)"/>
+          <path d="M-20 0 C -30 -50, 0 -100, 0 -105 C 0 -100, 30 -50, 20 0 Z" fill="url(#tulipLight)"/>
+        </g>
 
-              <!-- Golden Silk Ribbon Gradient -->
-              <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fef08a" />
-                <stop offset="40%" stop-color="#f59e0b" />
-                <stop offset="100%" stop-color="#b45309" />
-              </linearGradient>
+        <!-- Lazo -->
+        <g id="ribbon" transform="translate(200, 400)">
+          <ellipse cx="0" cy="0" rx="36" ry="14" fill="url(#ribbonGrad)"/>
+          <circle cx="0" cy="0" r="10" fill="#fef08a"/>
+          <path d="M-10 10 C -25 35, -20 60, -35 80" stroke="url(#ribbonGrad)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M10 10 C 25 35, 20 60, 35 80" stroke="url(#ribbonGrad)" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
 
-              <!-- Radial glow backdrop -->
-              <radialGradient id="tulipGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#facc15" stop-opacity="0.3" />
-                <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.1" />
-                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-
-            <!-- Warm backglow -->
-            <circle cx="200" cy="180" r="160" fill="url(#tulipGlow)" />
-
-            <g class="animate-tulip-breeze">
-              <!-- === STALKS / STEMS === -->
-              <g id="stems">
-                <!-- Outer Left Stem -->
-                <path d="M 200 370 C 185 300, 140 240, 115 155" stroke="url(#stemGrad)" stroke-width="6.5" stroke-linecap="round" fill="none" />
-                <!-- Mid Left Stem -->
-                <path d="M 200 370 C 190 290, 160 220, 155 130" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round" fill="none" />
-                <!-- Center Main Tall Stem -->
-                <path d="M 200 370 C 200 290, 200 210, 200 100" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round" fill="none" />
-                <!-- Mid Right Stem -->
-                <path d="M 200 370 C 210 290, 240 220, 245 130" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round" fill="none" />
-                <!-- Outer Right Stem -->
-                <path d="M 200 370 C 215 300, 260 240, 285 155" stroke="url(#stemGrad)" stroke-width="6.5" stroke-linecap="round" fill="none" />
-              </g>
-
-              <!-- === ELEGANT TULIP LEAVES === -->
-              <g id="leaves">
-                <!-- Left Long Graceful Leaf -->
-                <g class="animate-leaf-left">
-                  <path d="M 190 340 C 130 330, 80 260, 60 180 C 85 220, 130 270, 185 310 Z" fill="url(#leafGrad)" opacity="0.95" />
-                  <path d="M 190 340 C 130 330, 80 260, 60 180" stroke="#bbf7d0" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6" />
-                </g>
-                <!-- Right Long Graceful Leaf -->
-                <g class="animate-leaf-right">
-                  <path d="M 210 340 C 270 330, 320 260, 340 180 C 315 220, 270 270, 215 310 Z" fill="url(#leafGrad)" opacity="0.95" />
-                  <path d="M 210 340 C 270 330, 320 260, 340 180" stroke="#bbf7d0" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6" />
-                </g>
-                <!-- Center Inner Slender Leaves -->
-                <path d="M 195 300 C 170 260, 165 210, 175 160 C 185 200, 195 240, 200 280 Z" fill="url(#leafGrad)" opacity="0.85" />
-                <path d="M 205 300 C 230 260, 235 210, 225 160 C 215 200, 205 240, 200 280 Z" fill="url(#leafGrad)" opacity="0.85" />
-              </g>
-
-              <!-- === FIVE FLOURISHING YELLOW TULIPS === -->
-
-              <!-- 1. Left Outer Tulip -->
-              <g transform="translate(115, 155) rotate(-18)" class="cursor-pointer hover:scale-110 transition-transform duration-300" onclick="burstTulip(115, 155)">
-                <!-- Back Petals -->
-                <path d="M -16 -4 C -28 -28, -8 -52, 0 -58 C 8 -52, 28 -28, 16 -4 Z" fill="url(#tulipPetalBack)" />
-                <!-- Left Petal Curve -->
-                <path d="M -22 -6 C -34 -25, -24 -50, -4 -58 C -14 -32, -6 -12, 6 2 C -8 3, -16 1, -22 -6 Z" fill="url(#tulipPetalGrad2)" />
-                <!-- Right Petal Curve -->
-                <path d="M 22 -6 C 34 -25, 24 -50, 4 -58 C 14 -32, 6 -12, -6 2 C 8 3, 16 1, 22 -6 Z" fill="url(#tulipPetalGrad1)" />
-                <!-- Center Front Curving Petal -->
-                <path d="M -14 0 C -22 -26, -10 -54, 0 -62 C 10 -54, 22 -26, 14 0 C 7 5, -7 5, -14 0 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M 0 -60 C 2 -40, 2 -20, 0 2" stroke="#fff" stroke-width="1.2" opacity="0.4" stroke-linecap="round" fill="none"/>
-              </g>
-
-              <!-- 2. Right Outer Tulip -->
-              <g transform="translate(285, 155) rotate(18)" class="cursor-pointer hover:scale-110 transition-transform duration-300" onclick="burstTulip(285, 155)">
-                <path d="M -16 -4 C -28 -28, -8 -52, 0 -58 C 8 -52, 28 -28, 16 -4 Z" fill="url(#tulipPetalBack)" />
-                <path d="M 22 -6 C 34 -25, 24 -50, 4 -58 C 14 -32, 6 -12, -6 2 C 8 3, 16 1, 22 -6 Z" fill="url(#tulipPetalGrad2)" />
-                <path d="M -22 -6 C -34 -25, -24 -50, -4 -58 C -14 -32, -6 -12, 6 2 C -8 3, -16 1, -22 -6 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M -14 0 C -22 -26, -10 -54, 0 -62 C 10 -54, 22 -26, 14 0 C 7 5, -7 5, -14 0 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M 0 -60 C -2 -40, -2 -20, 0 2" stroke="#fff" stroke-width="1.2" opacity="0.4" stroke-linecap="round" fill="none"/>
-              </g>
-
-              <!-- 3. Mid Left Tulip -->
-              <g transform="translate(155, 130) rotate(-8)" class="cursor-pointer hover:scale-110 transition-transform duration-300" onclick="burstTulip(155, 130)">
-                <path d="M -18 -4 C -30 -30, -9 -56, 0 -64 C 9 -56, 30 -30, 18 -4 Z" fill="url(#tulipPetalBack)" />
-                <path d="M -24 -6 C -36 -28, -26 -54, -4 -64 C -15 -35, -7 -14, 7 2 C -9 3, -18 1, -24 -6 Z" fill="url(#tulipPetalGrad2)" />
-                <path d="M 24 -6 C 36 -28, 26 -54, 4 -64 C 15 -35, 7 -14, -7 2 C 9 3, 18 1, 24 -6 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M -15 0 C -24 -29, -11 -60, 0 -68 C 11 -60, 24 -29, 15 0 C 8 5, -8 5, -15 0 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M 0 -66 C 3 -45, 3 -20, 0 3" stroke="#fff" stroke-width="1.4" opacity="0.45" stroke-linecap="round" fill="none"/>
-              </g>
-
-              <!-- 4. Mid Right Tulip -->
-              <g transform="translate(245, 130) rotate(8)" class="cursor-pointer hover:scale-110 transition-transform duration-300" onclick="burstTulip(245, 130)">
-                <path d="M -18 -4 C -30 -30, -9 -56, 0 -64 C 9 -56, 30 -30, 18 -4 Z" fill="url(#tulipPetalBack)" />
-                <path d="M 24 -6 C 36 -28, 26 -54, 4 -64 C 15 -35, 7 -14, -7 2 C 9 3, 18 1, 24 -6 Z" fill="url(#tulipPetalGrad2)" />
-                <path d="M -24 -6 C -36 -28, -26 -54, -4 -64 C -15 -35, -7 -14, 7 2 C -9 3, -18 1, -24 -6 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M -15 0 C -24 -29, -11 -60, 0 -68 C 11 -60, 24 -29, 15 0 C 8 5, -8 5, -15 0 Z" fill="url(#tulipPetalGrad1)" />
-                <path d="M 0 -66 C -3 -45, -3 -20, 0 3" stroke="#fff" stroke-width="1.4" opacity="0.45" stroke-linecap="round" fill="none"/>
-              </g>
-
-              <!-- 5. Queen Center Main Tulip (Hero) -->
-              <g transform="translate(200, 100) scale(1.15)" class="cursor-pointer hover:scale-125 transition-transform duration-300" onclick="burstTulip(200, 100)">
-                <!-- Back layer petals -->
-                <path d="M -20 -4 C -35 -35, -10 -64, 0 -72 C 10 -64, 35 -35, 20 -4 Z" fill="url(#tulipPetalBack)" />
-                <!-- Left petal layer -->
-                <path d="M -28 -6 C -42 -32, -30 -62, -5 -72 C -18 -40, -8 -16, 8 2 C -10 3, -20 1, -28 -6 Z" fill="url(#tulipPetalGrad2)" />
-                <!-- Right petal layer -->
-                <path d="M 28 -6 C 42 -32, 30 -62, 5 -72 C 18 -40, 8 -16, -8 2 C 10 3, 20 1, 28 -6 Z" fill="url(#tulipPetalGrad1)" />
-                <!-- Front Main Sculpted Tulip Petal -->
-                <path d="M -17 0 C -28 -34, -13 -68, 0 -78 C 13 -68, 28 -34, 17 0 C 9 6, -9 6, -17 0 Z" fill="url(#tulipPetalGrad1)" />
-                
-                <!-- Inner Delicate highlight & center vein glow -->
-                <path d="M 0 -75 C 0 -45, 0 -15, 0 4" stroke="#ffffff" stroke-width="1.8" opacity="0.55" stroke-linecap="round" fill="none"/>
-                
-                <!-- Tiny golden heart badge inside the hero tulip -->
-                <path d="M 0 -22 Q -5 -30 0 -36 Q 5 -30 0 -22" fill="#f59e0b" opacity="0.85" />
-              </g>
-
-              <!-- === SILK RIBBON & BOW === -->
-              <g transform="translate(200, 360)">
-                <!-- Ribbon loop left -->
-                <path d="M -4 0 C -35 -20, -50 15, -15 20 C -2 18, 0 8, -4 0 Z" fill="url(#ribbonGrad)" />
-                <!-- Ribbon loop right -->
-                <path d="M 4 0 C 35 -20, 50 15, 15 20 C 2 18, 0 8, 4 0 Z" fill="url(#ribbonGrad)" />
-                <!-- Tails -->
-                <path d="M -8 10 C -25 35, -45 55, -35 80 C -30 65, -15 50, -4 20 Z" fill="url(#ribbonGrad)" opacity="0.9" />
-                <path d="M 8 10 C 25 35, 45 55, 35 80 C 30 65, 15 50, 4 20 Z" fill="url(#ribbonGrad)" opacity="0.9" />
-                <!-- Center knot -->
-                <circle cx="0" cy="8" r="10" fill="#f59e0b" stroke="#fde047" stroke-width="1.5" />
-              </g>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Central Romantic Dedication -->
-        <div class="mt-4 text-center">
-          <p class="text-xs uppercase font-semibold tracking-widest text-amber-300/80">Con todo el amor de mi vida</p>
-          
-          <!-- Requested Dedication Headline -->
-          <h1 class="glow-romantic-title font-romantic text-4xl sm:text-5xl md:text-6xl text-amber-200 mt-1 leading-tight tracking-wide py-1">
-            Para Haly, mi bubi amada
-          </h1>
-
-          <p class="text-amber-100/85 text-xs sm:text-sm md:text-base mt-2 max-w-md mx-auto italic font-sans-clean leading-relaxed">
-            "Dicen que los tulipanes amarillos guardan la luz del sol más dulce. Para mí, tú eres esa luz eterna que ilumina cada uno de mis días."
-          </p>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <button id="btn-open-letter" class="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 text-neutral-900 font-bold shadow-lg shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
-            <span>💌</span>
-            <span>Carta para mi bubi</span>
-          </button>
-
-          <button id="btn-tulip-petals" class="w-full sm:w-auto px-6 py-3 rounded-full bg-amber-950/60 hover:bg-amber-900/70 text-amber-200 border border-amber-400/40 font-semibold shadow-md hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
-            <span>✨</span>
-            <span>Lluvia de tulipanes</span>
-          </button>
-        </div>
-
-      </div>
-
-      <p class="text-xs text-amber-300/70 text-center mt-3 flex items-center justify-center gap-1.5">
-        <span>💛</span> Toca los tulipanes o cualquier parte para soltar pétalos mágicos
-      </p>
-    </main>
-
-    <!-- Footer -->
-    <footer class="w-full text-center py-2 text-xs text-amber-300/50 tracking-wider">
-      Eternamente para ti, mi bubi hermosa • Siempre juntos
-    </footer>
+    <!-- BOTÓN QUE ABRE LA CARTA DIRECTO CON ONCLICK -->
+    <button class="btn-carta" onclick="abrirCarta()">
+      <span>💌</span> Toca aquí para leer tu carta
+    </button>
   </div>
 
-  <!-- Romantic Love Letter Modal -->
-  <div id="modal-letter" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500">
-    <div id="modal-card" class="relative w-full max-w-lg bg-gradient-to-b from-[#fffdf7] to-[#fff8e7] rounded-3xl p-6 sm:p-9 shadow-2xl border-2 border-amber-300/80 transform scale-90 transition-all duration-500 text-stone-800">
+  <footer>Hecho con todo mi amor para ti</footer>
+
+  <!-- MODAL DE LA CARTA -->
+  <div id="letter-modal" onclick="cerrarSiFondo(event)">
+    <div class="letter-content">
+      <button class="btn-close" onclick="cerrarCarta()">✕</button>
+      <div style="text-align: center; font-size: 24px;">💛🌷💛</div>
+      <div class="letter-title">Para mi bubi amada, Haly</div>
+      <div class="letter-body">
+        <p>Mi amor,</p>
+        <p>Dicen que las flores amarillas significan alegría pura, complicidad y una luz que nunca deja de iluminar... y exactamente eso es lo que eres tú en mi vida.</p>
+        <p>Estos tulipanes son un pequeño símbolo de lo mucho que te adoro, de cada momento hermoso a tu lado y del inmenso cariño que siempre tengo para ti.</p>
+        <p style="text-align: center; font-weight: bold; color: #854d0e; font-size: 25px; margin-top: 15px;">
+          ¡Te amo con todo mi ser, Haly!
+        </p>
+      </div>
+      <button class="btn-heart" onclick="cerrarCarta()">💖 ¡Guardar en mi corazón!</button>
+    </div>
+  </div>
+
+  <script>
+    // FUNCIONES DIRECTAS DE LA CARTA
+    function abrirCarta() {
+      document.getElementById('letter-modal').style.display = 'flex';
+    }
+
+    function cerrarCarta() {
+      document.getElementById('letter-modal').style.display = 'none';
+    }
+
+    function cerrarSiFondo(e) {
+      if (e.target.id === 'letter-modal') {
+        cerrarCarta();
+      }
+    }
+
+    // ANIMACIÓN DE PÉTALOS EN CANVAS
+    const canvas = document.getElementById('petals-canvas');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+
+    const petals = [];
+    for (let i = 0; i < 30; i++) {
+      petals.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        s: Math.random() * 8 + 6,
+        sy: Math.random() * 1.2 + 0.8,
+        sx: Math.random() * 0.8 - 0.4,
+        rot: Math.random() * Math.PI * 2,
+        color: ['#fde047', '#facc15', '#fef08a'][Math.floor(Math.random() * 3)]
+      });
+    }
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, w, h);
+      petals.forEach(p => {
+        p.y += p.sy;
+        p.x += Math.sin(p.y * 0.01) + p.sx;
+        p.rot += 0.01;
+        if (p.y > h + 20) {
+          p.y = -20;
+          p.x = Math.random() * w;
+        }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(0, 0, p.s, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+
+    // MÚSICA OPCIONAL
+    let audioCtx = null;
+    let playing = false;
+    let interval = null;
+    const notes = [261.63, 329.63, 392.00, 523.25, 392.00];
+    let noteIdx = 0;
+
+    function toggleMusic() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       
-      <!-- Modal Header -->
-      <div class="flex items-start justify-between pb-3 border-b border-amber-200">
-        <div class="flex items-center gap-3">
-          <span class="text-3xl">🌷</span>
-          <div
+      const btn = document.getElementById('musicBtn');
+      if (playing) {
+        clearInterval(interval);
+        playing = false;
+        btn.innerText = '🎵 Música';
+      } else {
+        playing = true;
+        btn.innerText = '🎶 Sonando';
+        interval = setInterval(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.frequency.value = notes[noteIdx % notes.length];
+          noteIdx++;
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 1.2);
+        }, 900);
+      }
+    }
+  </script>
+</body>
+</html>
